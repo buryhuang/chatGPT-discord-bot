@@ -12,4 +12,6 @@ pipenv install
 python bot.py
 ```
 
-Contribute / Follow
+If you like this, PLEASE tribute to, let me know! That's all I'm hope for: https://twitter.com/buryhuang
+
+Enjoy chatting with GPT!
