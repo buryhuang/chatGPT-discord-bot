@@ -40,7 +40,7 @@ class ChatBot(discord.Client):
 
         # Applies to gpt-3 & gpt-4
         response = openai.ChatCompletion.create(
-            model="gpt-4",  # can be gpt-3.5-turbo
+            model="gpt-3.5-turbo",  # can be gpt-3.5-turbo, gpt-4
             messages=[{"role": "user", "content": message.content}]
         )
 
