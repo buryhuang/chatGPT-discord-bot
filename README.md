@@ -11,3 +11,5 @@ pipenv install
 ```angular2html
 python bot.py
 ```
+
+Contribute / Follow
