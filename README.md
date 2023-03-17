@@ -1,2 +1,2 @@
 # chatGPT-discord-bot
-Simple, easy to read, discord bot to send image to openAI gpt
+Single file, Simple, easy to read, discord bot to send image to openAI gpt
