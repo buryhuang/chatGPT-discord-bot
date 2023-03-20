@@ -23,6 +23,9 @@ class ChatBot(discord.Client):
         if message.author == self.user:
             return
 
+        if not message.content or len(message.content) == 0:
+            return
+
         input_content = [message.content]
 
         if message.attachments:
@@ -38,15 +41,26 @@ class ChatBot(discord.Client):
         #     messages=[{"role": "user", "content": input_content}]
         # )
 
+        system_role = """
+You are a senior blockchain developer to create solidity smart contract given a specification.
+
+- Describe general use case
+- Describe interface and acceptance criteria
+- Output a ethereum smart contract written in solidity
+        """
+
         # Applies to gpt-3 & gpt-4
         response = openai.ChatCompletion.create(
-            model="gpt-3.5-turbo",  # can be gpt-3.5-turbo, gpt-4
-            messages=[{"role": "user", "content": message.content}]
+            model="gpt-4",  # can be gpt-3.5-turbo, gpt-4
+            messages=[
+                {"role": "system", "content": system_role},
+                {"role": "user", "content": message.content}
+            ]
         )
 
         assistant_response = response.choices[0]['message']['content']
         await message.channel.send(assistant_response)
 
 
-client = ChatBot(intents=discord.Intents.default())
+client = ChatBot(intents=discord.Intents.default(), heartbeat_timeout=600)
 client.run(DISCORD_TOKEN)
